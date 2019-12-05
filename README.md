@@ -1,3 +1,16 @@
+# Port
+This is a modification from https://github.com/redhat-cop/containers-quickstarts jenkins-slave-python
+Just adding the following Packages
+`RPMS:
+    Chrome
+    Chromedriver`
+`PIP:
+    robotframework
+    selenium
+    robotframework-seleniumlibrary
+    robotframework-selenium2library`
+
+
 # jenkins-slave-robot
 Provides a docker image of the robotframework for use as a Jenkins slave.
 

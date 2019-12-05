@@ -17,7 +17,7 @@ RUN INSTALL_PKGS=" \
       rh-python36-python-pip nss_wrapper \
       httpd24 httpd24-httpd-devel httpd24-mod_ssl httpd24-mod_auth_kerb httpd24-mod_ldap \
       httpd24-mod_session atlas-devel gcc-gfortran libffi-devel libtool-ltdl enchant" && \
-    TEST_PKGS="chromedriver https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm" \
+    TEST_PKGS="chromedriver https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm" && \
     DISABLE_REPOS=--disablerepo='rhel-*' && \
     yum $DISABLE_REPOS install -y yum-utils && \
     yum -y --setopt=tsflags=nodocs $DISABLE_REPOS install $INSTALL_PKGS && \
@@ -31,8 +31,6 @@ RUN INSTALL_PKGS=" \
     source scl_source enable rh-python36 && \
     scl enable rh-python36 bash && \
     python3 -m pip install twine robotframework selenium robotframework-seleniumlibrary robotframework-selenium2library 
-
-#RUN python3 -m pip install robotframework selenium robotframework-seleniumlibrary 
 
 ADD scl_enable /usr/share/container-scripts/
 ENV BASH_ENV=/usr/share/container-scripts/scl_enable \
