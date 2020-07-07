@@ -25,23 +25,17 @@ RUN INSTALL_PKGS=" \
     yum -y --setopt=tsflags=nodocs $DISABLE_REPOS install $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum -y --setopt=tsflags=nodocs $DISABLE_REPOS install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-    yum-config-manager --add-repo http://mirror.centos.org/centos/7.7.1908/os/x86_64/ && \
+    yum-config-manager --add-repo http://mirror.centos.org/centos-7/7/os/x86_64/ && \
     yum -y --setopt=tsflags=nodocs $DISABLE_REPOS --nogpgcheck install $TEST_PKGS && \
     wget https://github.com/mozilla/geckodriver/releases/download/$GECKO_VERSION/geckodriver-$GECKO_VERSION-linux64.tar.gz && \
     tar -xf geckodriver-$GECKO_VERSION-linux64.tar.gz && \
     mv geckodriver /usr/local/bin && \
     rm -f geckodriver-$GECKO_VERSION-linux64.tar.gz && \
-    echo 'test 1' && \
     yum -y erase epel-release && \
-    echo 'test 2' && \
     rm -f /etc/yum.repos.d/mirror* && \
-    echo 'test 3' && \
     yum -y clean all --enablerepo='*' && \
-    echo 'test 4' && \
     source scl_source enable rh-python36 && \
-    echo 'test 5' && \
     python3 -m pip install twine robotframework selenium robotframework-seleniumlibrary robotframework-selenium2library && \
-    echo 'test 6' && \
     scl enable rh-python36 bash
 
 ENV BASH_ENV=/usr/share/container-scripts/scl_enable \
